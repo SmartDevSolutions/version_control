@@ -28,7 +28,8 @@ Licensed under the Font Awesome Free License (https://fontawesome.com/license/fr
     </header>
 
     <main>
-      <h1>Download Applications</h1>
+        {{dd($apps)}}
+        <h1>Download Applications</h1>
       <div class="grid-container">
         <div class="grid-item">
           <i class="fas fa-signature"></i><span>App One</span>
