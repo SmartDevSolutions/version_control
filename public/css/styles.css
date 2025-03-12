@@ -6,7 +6,7 @@
         padding: 1rem;
         text-align: center;
         background-color: #FFFFFF;
-        box-shadow: 0 2px 5px rgba(67, 81, 90, 0.3); /* Increase opacity to 0.3 */
+        box-shadow: 0 2px 5px rgba(67, 81, 90, 0.3);
         position: relative;
         width: 100vw;
         z-index: 1002;
@@ -130,11 +130,17 @@
 
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 1rem;
+    }
+
+    .grid-item {
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 12px rgba(67, 81, 90, 0.2);
     }
 
     .grid-item i {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: #f58220;
     }
 
@@ -145,8 +151,8 @@
 
     .expanded-content {
         width: 90%;
-        max-width: 350px;
-        padding: 2rem;
+        max-width: 300px;
+        padding: 1.5rem;
         margin: 0 auto;
         background-color: #FFFFFF;
         border: 1px solid #e0e0e0;
@@ -155,13 +161,13 @@
     }
 
     .expanded-content h2 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         color: #000000;
     }
 
     .option-btn, .close-btn {
-        font-size: 1rem;
-        padding: 0.8rem;
+        font-size: 0.9rem;
+        padding: 0.7rem;
     }
 }
 
@@ -285,18 +291,18 @@
     }
 
     .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
 
     .grid-item {
-        padding: 1.5rem;
+        padding: 1rem;
         border: 1px solid #e0e0e0;
         box-shadow: 0 4px 12px rgba(67, 81, 90, 0.2);
     }
 
     .grid-item i {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: #f58220;
     }
 
@@ -307,8 +313,8 @@
 
     .expanded-content {
         width: 90%;
-        max-width: 300px;
-        padding: 1.5rem;
+        max-width: 250px;
+        padding: 1rem;
         margin: 0 auto;
         background-color: #FFFFFF;
         border: 1px solid #e0e0e0;
@@ -317,13 +323,13 @@
     }
 
     .expanded-content h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #000000;
     }
 
     .option-btn, .close-btn {
-        font-size: 0.9rem;
-        padding: 0.7rem;
+        font-size: 0.8rem;
+        padding: 0.6rem;
     }
 
     h1 {
@@ -345,6 +351,7 @@ body {
     background-color: #FFFFFF;
     color: #000000;
     overflow-x: hidden;
+    width: 100vw;
 }
 
 header {
@@ -361,8 +368,8 @@ header {
 }
 
 .logo img {
-    max-width: 180px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 180px;
+    height: auto;
     display: block;
     margin: 0 auto;
 }
@@ -432,7 +439,7 @@ main {
     padding: 2rem;
     text-align: center;
     position: relative;
-    width: 100%;
+    width: 100%; /* Ensure main takes full width */
     max-width: 1200px;
     margin: 0 auto;
     background-color: #FFFFFF;
@@ -455,7 +462,12 @@ h1 {
     z-index: 1;
 }
 
+/* GRID APP */
 .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #FFFFFF;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -466,6 +478,7 @@ h1 {
     width: 100%;
     box-shadow: 0 4px 12px rgba(67, 81, 90, 0.2);
     z-index: 1;
+    height: 200px;
 }
 
 .grid-item i {
@@ -478,6 +491,11 @@ h1 {
     display: block;
     font-size: 1.2rem;
     color: #000000;
+    margin-top: 10px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-item:hover {
@@ -558,5 +576,5 @@ h1 {
     width: auto;
     height: auto;
     display: block;
-    margin: 0 auto 1rem auto; /* Center and add some margin at the bottom */
+    margin: 0 auto 2rem auto; /* Center and add some margin at the bottom */
 }
