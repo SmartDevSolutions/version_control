@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Overseas</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}"/>
 
     <!--
 Icons provided by Font Awesome (https://fontawesome.com/)
@@ -26,45 +27,20 @@ Licensed under the Font Awesome Free License (https://fontawesome.com/license/fr
         </ul>
       </nav>
     </header>
-
     <main>
-        {{dd($apps)}}
         <h1>Download Applications</h1>
       <div class="grid-container">
-        <div class="grid-item">
-          <i class="fas fa-signature"></i><span>App One</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-truck"></i><span>App Two</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-tools"></i><span>App Three</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-shipping-fast"></i><span>App Four</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-credit-card"></i><span>App Five</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-briefcase"></i><span>App Six</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-laptop-medical"></i><span>App Seven</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-laptop"></i><span>App Eight</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-suitcase"></i><span>App Nine</span>
-        </div>
-        <div class="grid-item">
-          <i class="fas fa-gears"></i><span>App Ten</span>
-        </div>
+        @foreach ($apps as $app)
+          <div class="grid-item" data-name="{{ $app['name'] }}" data-link="{{ $app['link'] }}" data-icon="{{ asset('storage/' . $app['icon']) }}">
+            <img src="{{ asset('storage/' . $app['icon']) }}" alt="{{ $app['name'] }} Icon" class="app-icon">
+            <span>{{ $app['name'] }}</span>
+          </div>
+        @endforeach
       </div>
       <div class="expanded-view" id="expandedView">
         <div class="expanded-content">
           <h2 id="expandedTitle"></h2>
+          <img id="expandedIcon" src="" alt="App Icon" class="app-icon">
           <button class="option-btn" id="installGuide">
             Upute za instalaciju
           </button>
