@@ -25,9 +25,12 @@ class ApplicationResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('link')
-                    ->required(),
-                Forms\Components\FileUpload::make('icon'),
+                Forms\Components\FileUpload::make('link')
+                    ->required()
+                    ->openable()
+                    ->maxSize(102400),
+                Forms\Components\FileUpload::make('icon')
+                    ->openable(),
                 Forms\Components\Toggle::make('is_visible')
                     ->required(),
             ]);
