@@ -28,7 +28,11 @@ class ApplicationResource extends Resource
                 Forms\Components\FileUpload::make('link')
                     ->required()
                     ->openable()
-                    ->maxSize(102400),
+                ,
+                Forms\Components\FileUpload::make('pdf_installation_instructions')
+                    ->openable(),
+                Forms\Components\FileUpload::make('pdf_user_manual')
+                    ->openable(),
                 Forms\Components\FileUpload::make('icon')
                     ->openable(),
                 Forms\Components\Toggle::make('is_visible')
