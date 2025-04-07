@@ -536,6 +536,10 @@ h1 {
     font-size: 1.1rem;
 }
 
+a.option-btn {
+    text-decoration: none;
+}
+
 .option-btn, .close-btn {
     display: block;
     width: 100%;

@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const navMenu = document.querySelector(".nav-menu");
     const menuToggle = document.querySelector(".menu-toggle");
 
-    // Toggle navigation menu
     menuToggle.addEventListener("click", function (e) {
         e.preventDefault();
         navMenu.classList.toggle("active");
@@ -16,39 +15,81 @@ document.addEventListener("DOMContentLoaded", function () {
     const expandedIcon = document.getElementById("expandedIcon");
     const closeBtn = document.querySelector(".close-btn");
     const downloadButton = document.getElementById("downloadApp");
+    const installGuideBtn = document.getElementById("installGuide");
+    const usageGuideBtn = document.getElementById("usageGuide");
 
-    // Show expanded view on grid item click
+    let currentApp = {};
+
     gridItems.forEach((item) => {
         item.addEventListener("click", function () {
             const appName = this.getAttribute("data-name");
             const appLink = this.getAttribute("data-link");
             const appIcon = this.getAttribute("data-icon");
+            const installGuide = this.getAttribute("data-install");
+            const usageGuide = this.getAttribute("data-usage");
 
+            // fill expanded view with app details
             expandedTitle.textContent = appName;
             expandedIcon.src = appIcon;
-            downloadButton.setAttribute("data-link", appLink);
+
+            currentApp = {
+                link: appLink,
+                installGuide,
+                usageGuide
+            };
+
+            // show/hide buttons
+            installGuideBtn.style.display = installGuide ? "inline-block" : "none";
+            usageGuideBtn.style.display = usageGuide ? "inline-block" : "none";
+            downloadButton.style.display = appLink ? "inline-block" : "none";
 
             expandedView.style.display = "flex";
             document.body.style.overflow = "hidden";
         });
     });
 
-    // Handle download button click
+    // btn for download
     downloadButton.addEventListener("click", function () {
-        const appLink = this.getAttribute("data-link");
-        window.location.href = appLink;
+        if (currentApp.link) {
+            triggerDownload(currentApp.link);
+        }
     });
 
-    // Close expanded view
+    // btn for install guide
+    installGuideBtn.addEventListener("click", function () {
+        if (currentApp.installGuide) {
+            triggerDownload(currentApp.installGuide);
+        }
+    });
+
+    // btn for guide
+    usageGuideBtn.addEventListener("click", function () {
+        if (currentApp.usageGuide) {
+            triggerDownload(currentApp.usageGuide);
+        }
+    });
+
+    // closeBtn
     closeBtn.addEventListener("click", function () {
         expandedView.style.display = "none";
         document.body.style.overflow = "auto";
     });
 
+    // close expandedView on clicking outside of it
     expandedView.addEventListener("click", function (e) {
         if (e.target === expandedView) {
             expandedView.style.display = "none";
             document.body.style.overflow = "auto";
         }
     });
+
+    function triggerDownload(url) {
+        const filename = url.split('/').pop().split('?')[0];
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 });
