@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 use App\Interface\ApplicationRepositoryInterface;
 use App\Repository\ApplicationRepository;
-use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Repository binding
         $this->app->singleton(ApplicationRepositoryInterface::class, ApplicationRepository::class);
     }
 
@@ -21,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Force HTTPS in production
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
